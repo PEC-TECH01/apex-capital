@@ -1,0 +1,264 @@
+
+/* ========================================
+   APEX CAPITAL — AUTHENTICATION PAGES
+======================================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(35, 112, 78, 0.12),
+      transparent 35%
+    ),
+    #f4f3ec;
+  color: #183c2d;
+}
+
+.auth-panel {
+  width: 100%;
+  max-width: 490px;
+  padding: 42px;
+  background: #ffffff;
+  border: 1px solid #e4e9e2;
+  border-radius: 20px;
+  box-shadow: 0 24px 70px rgba(24, 60, 45, 0.10);
+  box-sizing: border-box;
+}
+
+.auth-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #536b5d;
+  font: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.auth-back:hover {
+  color: #16734b;
+}
+
+.auth-brand {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: #173d2d;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.auth-brand span {
+  color: #24865b;
+}
+
+.auth-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 22px;
+  border-radius: 16px;
+  background: #e7f3eb;
+  color: #187447;
+}
+
+.auth-panel .eyebrow {
+  margin-bottom: 10px;
+  color: #24865b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.auth-panel h1 {
+  margin: 0 0 12px;
+  color: #173d2d;
+  font-size: clamp(28px, 5vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.auth-description {
+  margin: 0 0 28px;
+  color: #6b7b70;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.auth-field label {
+  color: #244a37;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.auth-field input {
+  width: 100%;
+  min-height: 49px;
+  padding: 13px 15px;
+  border: 1px solid #dce5dc;
+  border-radius: 10px;
+  outline: none;
+  background: #fbfcfa;
+  color: #183c2d;
+  font: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.auth-field input::placeholder {
+  color: #9aa69d;
+}
+
+.auth-field input:focus {
+  border-color: #278456;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(39, 132, 86, 0.12);
+}
+
+.auth-hint {
+  color: #77877b;
+  font-size: 12px;
+}
+
+.auth-submit {
+  width: 100%;
+  min-height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 10px;
+  background: #176b45;
+  color: #ffffff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.auth-submit:hover:not(:disabled) {
+  background: #105638;
+  box-shadow: 0 8px 20px rgba(23, 107, 69, 0.2);
+  transform: translateY(-1px);
+}
+
+.auth-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.auth-message {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.auth-error {
+  border: 1px solid #f0caca;
+  background: #fff0f0;
+  color: #a32929;
+}
+
+.auth-success {
+  border: 1px solid #c7e7d1;
+  background: #edf8f0;
+  color: #176b45;
+}
+
+.auth-switch {
+  margin: 24px 0 0;
+  color: #6b7b70;
+  font-size: 14px;
+  text-align: center;
+}
+
+.auth-switch button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #187447;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.auth-switch button:hover {
+  color: #105638;
+  text-decoration: underline;
+}
+
+.auth-switch button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.auth-disclaimer {
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px solid #e1ece3;
+  border-radius: 10px;
+  background: #f4f8f3;
+  color: #526c5a;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.auth-legal {
+  margin: 18px 0 0;
+  color: #89958c;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .auth-page {
+    padding: 20px 14px;
+    align-items: flex-start;
+  }
+
+  .auth-panel {
+    margin: auto 0;
+    padding: 28px 22px;
+    border-radius: 16px;
+  }
+
+  .auth-back {
+    margin-bottom: 24px;
+  }
+}
