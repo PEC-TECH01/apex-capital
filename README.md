@@ -15,18 +15,18 @@ Apex Capital is a modern digital investment management platform designed to simp
 
 ## Technology Stack
 
-**Frontend**
+### Frontend
 - React
 - Vite
 - CSS
 - Lucide React
 
-**Backend**
+### Backend
 - Node.js
 - Express.js
 - REST API
 
-**Database and Security**
+### Database and Security
 - PostgreSQL
 - `pg` (node-postgres)
 - bcryptjs
@@ -40,9 +40,12 @@ Apex Capital/
 ├── public/
 ├── src/
 │   ├── App.jsx
+│   ├── Auth.jsx
+│   ├── App.css
 │   ├── Dashboard.jsx
 │   ├── Dashboard.css
-│   └── ...
+│   ├── index.css
+│   └── main.jsx
 ├── server/
 │   ├── server.js
 │   ├── db.js
@@ -53,6 +56,7 @@ Apex Capital/
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
+├── vite.config.js
 └── README.md
 ```
 
@@ -60,43 +64,34 @@ Apex Capital/
 
 ### Prerequisites
 
+Make sure you have the following installed:
+
 - Node.js and npm
 - PostgreSQL
 - Git
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/apex-capital.git
+git clone https://github.com/PEC-TECH01/apex-capital.git
 cd apex-capital
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username.
-
-### 2. Install dependencies
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 3. Configure Environment Variables
 
-Create a `.env` file in the project root:
-
-```env
-PORT=5000
-DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@localhost:5432/apex_capital
-DATABASE_SSL=false
-JWT_SECRET=YOUR_LONG_RANDOM_SECRET
-```
-
-Replace the example database password and JWT secret with your own local values. Never commit your real `.env` file.
-
-### 4. Set up the database
+Create a `.env` file in the project root and configure the required environment variables for the PostgreSQL connection, JWT authentication, and any other settings used by the backend.
 
 Create a PostgreSQL database named `apex_capital`, then create the required tables and seed the investment plans. The database schema must match the application's backend queries.
 
-### 5. Start the backend
+**Important:** Never commit your `.env` file or expose database credentials and JWT secrets publicly.
+
+### 4. Start the Backend
 
 ```bash
 node server/server.js
@@ -106,7 +101,7 @@ The backend should be available at:
 
 `http://localhost:5000`
 
-### 6. Start the frontend
+### 5. Start the Frontend
 
 Open a second terminal in the project directory and run:
 
@@ -124,7 +119,7 @@ npm run build
 npm run preview
 ```
 
-The `server` script can also be used if configured in `package.json`.
+The backend can also be started using `npm run server` if that script is configured in `package.json`.
 
 ## Security Notes
 
@@ -145,10 +140,9 @@ The `server` script can also be used if configured in `package.json`.
 
 **Promise Ezeibe**
 
-GitHub: GitHub: https://github.com/PEC-TECH01
-
-Portfolio: https://PEC-TECH01.github.io/
+- **GitHub:** [PEC-TECH01](https://github.com/PEC-TECH01)
+- **Portfolio:** [PEC-TECH01 Portfolio](https://PEC-TECH01.github.io/)
 
 ---
 
-Built to bring clarity, confidence, and simplicity to digital investment management
+*Built to bring clarity, confidence, and simplicity to digital investment management.*
