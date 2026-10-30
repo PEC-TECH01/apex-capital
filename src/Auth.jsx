@@ -1,7 +1,6 @@
 
 import { useState } from 'react'
-
-const API_URL = 'http://localhost:5000/api/auth'
+import { supabase } from './supabase'
 
 export default function Auth({
   initialMode = 'login',
@@ -28,55 +27,57 @@ export default function Auth({
   async function handleSubmit(event) {
     event.preventDefault()
     setMessage('')
-
-    if (isRegister && !fullName.trim()) {
-      setMessage('Please enter your full name.')
-      setMessageType('error')
-      return
-    }
-
     setLoading(true)
 
     try {
-      const response = await fetch(
-        `${API_URL}/${isRegister ? 'register' : 'login'}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ...(isRegister && { fullName: fullName.trim() }),
-            email: email.trim(),
-            password,
-          }),
+      let data
+
+      if (isRegister) {
+        if (!fullName.trim()) {
+          throw new Error('Please enter your full name.')
         }
-      )
 
-      const data = await response.json()
+        const result = await supabase.auth.signUp({
+          email: email.trim(),
+          password,
+          options: {
+            data: {
+              full_name: fullName.trim(),
+            },
+          },
+        })
 
-      if (!response.ok || data.success === false) {
-        throw new Error(
-          data.message || data.error || 'Authentication failed.'
-        )
+        if (result.error) throw result.error
+        data = result.data
+
+        if (!data.session) {
+          setMessageType('success')
+          setMessage(
+            'Account created! Please check your email to confirm your account before signing in.'
+          )
+          return
+        }
+      } else {
+        const result = await supabase.auth.signInWithPassword({
+          email: email.trim(),
+          password,
+        })
+
+        if (result.error) throw result.error
+        data = result.data
       }
 
-      if (!data.token || !data.user) {
-        throw new Error(
-          'The server response is missing the user or authentication token.'
-        )
+      if (!data.user || !data.session) {
+        throw new Error('Authentication was unsuccessful. Please try again.')
       }
 
       setMessageType('success')
       setMessage(isRegister ? 'Account created successfully.' : 'Login successful.')
 
-      onAuthenticated(data.user, data.token)
+      onAuthenticated(data.user, data.session.access_token)
     } catch (error) {
       setMessageType('error')
-      setMessage(
-        error.message ||
-          'Unable to connect to the server. Make sure your backend is running.'
-      )
+      setMessage(error.message || 'Authentication failed. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -174,9 +175,7 @@ export default function Auth({
               name="password"
               type="password"
               placeholder="Enter your password"
-              autoComplete={
-                isRegister ? 'new-password' : 'current-password'
-              }
+              autoComplete={isRegister ? 'new-password' : 'current-password'}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               minLength={8}
